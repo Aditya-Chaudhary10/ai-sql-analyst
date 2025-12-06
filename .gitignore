@@ -1,0 +1,18 @@
+# Node
+node_modules/
+.next/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Alembic (ignore compiled pyc inside versions, not the migrations folder)
+migrations/versions/*.pyc
+
+# OS & Editor junk
+.DS_Store
+.vscode/
+*.log
