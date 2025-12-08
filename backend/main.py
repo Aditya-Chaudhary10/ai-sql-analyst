@@ -1,9 +1,10 @@
-from fastapi import FastAPI,Depends
-from db.database import get_db
+from fastapi import FastAPI, Depends
+from backend.db.database import get_db
 from sqlalchemy import text
-from config.settings import settings
+from backend.config.settings import settings
+from backend.routers.query_router import router as query_router
 
-app=FastAPI()
+app = FastAPI()
 
 @app.get("/health")
 def health_check():
@@ -22,3 +23,5 @@ def config_check():
 async def db_test(db=Depends(get_db)):
     result = await db.execute(text("SELECT 1"))
     return {"db_status": result.scalar()}
+
+app.include_router(query_router)
